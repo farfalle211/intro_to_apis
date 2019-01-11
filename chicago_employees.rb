@@ -1,15 +1,17 @@
 require 'http'   #this is the name of the gem
 
-response = HTTP.get("http://data.cityofchicago.org/resource/xzkq-xp2w.json")
-employees = response.parse    #parse is not the meta information, just the body. taken apart and converted into Ruby
+response = HTTP.get("https://data.cityofchicago.org/resource/97wa-y6ff.json")   #HTTP is referring to the class inside the gem. 
+
+drivers = response.parse    #parse is not the meta information, just the body. taken apart and converted into Ruby. Once it is parsed you can call any array method on it. 
 
 
-employees.each do |employee|     #whatever is after the do and before the end is the "block", "employee" block variables becomes the first hash in the Chicago Data array. 
+drivers.each do |driver|     #whatever is after the do and before the end is the "block", "employee" block variables becomes the first hash in the Chicago Data array. 
 
-name = employee["name"]
-salary = employee["annual_salary"]
-puts "#{name} makes #{salary}"
+name = driver["name"]
+male = driver["sex"]
+puts "#{name} is #{male}"
 
 end
 
+p drivers.count
 
